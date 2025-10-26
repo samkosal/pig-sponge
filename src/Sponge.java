@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sponge {
 
   /*
@@ -33,8 +36,42 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
+    // lowercase the string thats being passed
+    sentence = sentence.toLowerCase();
+    // make a string list consisting of the lowercase word
+    String[] WordList = sentence.split(" ");
+
+    // empty list string
+    List<String> NewwordList = new ArrayList<>();
+    // loop over the string list for each word
+    for (int i = 0; i < WordList.length; i++) {
+      // empty string word: for each word 
+      String Newword = "";
+      // grab each word
+      String grabword = WordList[i];
+      //loop over the word for each char (tradiational for-loop)
+      for (int j = 0; j < grabword.length(); j++) {
+        // grab each char
+        char grabchar = grabword.charAt(j);
+        // if the int j is even: (i % 2 == 0)
+        if (j % 2 == 0) {
+          // add the char.lowercase into the empty string word
+            Newword += Character.toLowerCase(grabchar);
+        }
+        // else if the int j is odd: (i % 2 != 0)
+        else if (j % 2 != 0) {
+          // add the char.uppcase into the empty string word
+          Newword += Character.toUpperCase(grabchar);
+        }
+      
+      }
+      //add the empty string word into empty list string
+      NewwordList.add(Newword);
+    }
+    //return the joined list string into a sentence string
+    return String.join(" ", NewwordList);
   }
+  
 
 
   // Method to help with testing, you do not need to read this.

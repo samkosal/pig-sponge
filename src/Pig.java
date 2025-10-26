@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 public class Pig {
 
     /*
@@ -26,7 +29,31 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+        // empty array list
+        List<String> words = new ArrayList<>();
+        // vowel list: (a, e, i, o, or u)
+        String vowels = "aeiou";
+        // create a string list with the words in it
+        String[] sentenceWords = sentence.split(" ");
+        for (String word : sentenceWords) {
+            // variable word: grab the whole word
+            String processedWord = word;
+            // variable firstletter: grab the first letter in the string store it in a variable
+            char firstLetter = word.charAt(0);
+            // if the first letter does not contains a vowel
+            if (!vowels.contains(String.valueOf(firstLetter))) {
+                // update word: trim the word by removing the first letter and keeping the rest + "ay" at the end;
+                processedWord = word.substring(1) + firstLetter + "ay";
+            }
+            // else if it does contain a vowel
+            // do nothing (word remains unchanged)
+
+            // add word variable into the arraylist;
+            words.add(processedWord);
+        }
+        // EX: String.join(" and ", list);
+        // return arraylist.join(" ");
+        return String.join(" ", words);
     }
 
 
